@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InterestCalculator.MainPage" BackgroundColor="#323232">
+    <ContentPage.Resources>
+        <Color x:Key="SectionColor">#444444</Color>
+        <Color x:Key="LightFont">#d6d6d6</Color>
+        <Color x:Key="DornkFont">#4fd8eb</Color>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <Label 
+            Text="Amount"
+            TextColor="White" FontAttributes="Bold"  VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Border Stroke="black" StrokeThickness="1" Padding="5,0,0,0" >
+            <Entry x:Name="ExtryAmount" Placeholder="Amount" 
+             Keyboard="Numeric" TextChanged="ExtryAmount_TextChanged" ClearButtonVisibility="WhileEditing"  ></Entry>
+        </Border>
+
+        <Label 
+            Text="Interest Type"
+            TextColor="White" FontAttributes="Bold"  VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Border Stroke="black" StrokeThickness="1" Padding="5,0,0,0" >
+            <Picker x:Name="pickerInterestType"  >
+            </Picker>
+        </Border>
+        <Label 
+            Text="Interest Rate"
+            TextColor="White" FontAttributes="Bold"  VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Border Stroke="black" StrokeThickness="1" Padding="5,0,0,0" >
+            <Entry x:Name="ExtryInterestRate" Placeholder="Interest Rate" 
+             Keyboard="Numeric"  ></Entry>
+        </Border>
+            <FlexLayout Direction="Row"
+            AlignItems="Start"
+            JustifyContent="SpaceEvenly">
+            <RadioButton x:Name="Date" TextColor="White" IsChecked="True" CheckedChanged="Date_CheckedChanged" Content="Date" GroupName="abc" />
+            <RadioButton x:Name="Duration" TextColor="White"  CheckedChanged="Date_CheckedChanged" Content="Duration" GroupName="abc" />
+        </FlexLayout>
+        <StackLayout x:Name="Datespanel"  IsVisible="true" >
+            <Label 
+            Text="From Date"
+            TextColor="White" FontAttributes="Bold"  VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+            <Border Stroke="black" StrokeThickness="1" Padding="5,0,0,0" >
+                <DatePicker x:Name="FromDate"></DatePicker>
+            </Border>
+            <Label 
+            Text="To Date"
+            TextColor="White" FontAttributes="Bold"  VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+            <Border Stroke="black" StrokeThickness="1" Padding="5,0,0,0" >
+                <DatePicker x:Name="ToDate"></DatePicker>
+            </Border>
+        </StackLayout>
+        <FlexLayout x:Name="Durationpanel" IsVisible="false"  Direction="Row"
+            AlignItems="Start"
+            JustifyContent="SpaceEvenly">
+            <Border Stroke="black" StrokeThickness="1" WidthRequest="50" Padding="5,0,0,0" >
+                <Entry x:Name="Extryyears" Keyboard="Numeric"   ></Entry>
+            </Border>
+            <Label Text="Years" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold"  />
+            <Border Stroke="black" StrokeThickness="1" WidthRequest="50" Padding="5,0,0,0">
+                <Entry x:Name="ExtryMonths" Keyboard="Numeric" ></Entry>
+            </Border>
+            <Label Text="Months" TextColor="White" FontAttributes="Bold"  />
+            <Border Stroke="black" StrokeThickness="1" WidthRequest="50" Padding="5,0,0,0">
+                <Entry x:Name="ExtryDays" Keyboard="Numeric" ></Entry>
+            </Border>
+            <Label Text="Days" TextColor="White" FontAttributes="Bold"  />
+        </FlexLayout>
+        <FlexLayout  Direction="Row" 
+            AlignItems="Start"
+            JustifyContent="SpaceEvenly">
+            <Button x:Name="btnCalculat" Text="Calculat" WidthRequest="150" Clicked="btnCalculat_Clicked"></Button>
+        <Button x:Name="btnClear" Text="Clear" WidthRequest="150" Clicked="btnClear_Clicked"></Button>
+        </FlexLayout>
+        <StackLayout x:Name="outputPanel" BackgroundColor="Blue" IsVisible="False" Padding="10,10,10,10">
+            <Label x:Name="lblTotalTime" TextColor="White" FontAttributes="Bold"  />
+            <Label x:Name="lblInterestAmount" TextColor="White" FontAttributes="Bold"  />
+            <Label x:Name="lblPrincipleAmount" TextColor="White" FontAttributes="Bold"  />
+            <Label x:Name="lblTotalAmount" TextColor="White" FontAttributes="Bold"  />
+        </StackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
